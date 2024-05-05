@@ -1,0 +1,19 @@
+{
+  "name": "max-call-stack-exceeded",
+  "version": "1.0.0",
+  "description": "Demonstration of TS error max call stack size exceeded",
+  "main": "index.js",
+  "scripts": {
+    "generate": "odata2ts",
+    "test-trippin": "tsc -p ./tsconfig.trippin.json",
+    "test-trippinBi": "tsc -p ./tsconfig.trippinBi.json",
+    "test-casePacer": "tsc -p ./tsconfig.casePacer.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@odata2ts/odata2ts": "0.34.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
