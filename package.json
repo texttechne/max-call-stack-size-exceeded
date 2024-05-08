@@ -7,7 +7,12 @@
     "generate": "odata2ts",
     "test-trippin": "tsc -p ./tsconfig.trippin.json",
     "test-trippinBi": "tsc -p ./tsconfig.trippinBi.json",
-    "test-casePacer": "tsc -p ./tsconfig.casePacer.json"
+    "test-casePacer": "tsc -p ./tsconfig.casePacer.json",
+    "test-casePacerBundled": "tsc -p ./tsconfig.casePacerBundled.json",
+    "check-circular-deps-trippin": "madge ./build/trippin ./build/trippinBi --extensions ts --circular",
+    "check-circular-deps-casePacer": "madge ./build/casePacer --extensions ts --circular",
+    "check-circular-deps-casePacerBundled": "madge ./build/casePacerBundled --extensions ts --circular",
+    "madge": "madge"
   },
   "author": "texttechne",
   "license": "ISC",

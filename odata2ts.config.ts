@@ -6,29 +6,25 @@ const config: ConfigFileOptions = {
   emitMode: EmitModes.ts,
   prettier: true,
   services: {
-    // dynamics: {
-    //   serviceName: "Dynamics",
-    //   mode: Modes.service,
-    //   source: "odata/dynamics.xml",
-    //   output: "build/dynamics",
-    //   allowRenaming: true,
-    //   bundledFileGeneration: false,
-    //   byTypeAndName: [
-    //     {
-    //       type: TypeModel.EntityType,
-    //       name: "solution",
-    //       mappedName: "SolutionEntity",
-    //     },
-    //   ],
-    // },
+    // the failure case: generation succeeds, compiling doesn't
     casePacer: {
-      emitMode: EmitModes.ts,
+      // you could switch this to Modes.qobjects and compilation succeeds => problem only occurs with generated service files
       mode: Modes.service,
       bundledFileGeneration: false,
       serviceName: "CasePacer",
       source: "odata/casePacer.xml",
       output: "build/casePacer",
     },
+    casePacerBundled: {
+      mode: Modes.service,
+      // to work around circular dependencies (same stuff is put into the same file, generating only 3 files in total)
+      // => different compilation error
+      bundledFileGeneration: true,
+      serviceName: "CasePacer",
+      source: "odata/casePacer.xml",
+      output: "build/casePacerBundled",
+    },
+    // works fine
     trippin: {
       bundledFileGeneration: false,
       source: "odata/trippin.xml",
