@@ -6,21 +6,21 @@ const config: ConfigFileOptions = {
   emitMode: EmitModes.ts,
   prettier: true,
   services: {
-    dynamics: {
-      serviceName: "Dynamics",
-      mode: Modes.service,
-      source: "odata/dynamics.xml",
-      output: "build/dynamics",
-      allowRenaming: true,
-      bundledFileGeneration: false,
-      byTypeAndName: [
-        {
-          type: TypeModel.EntityType,
-          name: "solution",
-          mappedName: "SolutionEntity",
-        },
-      ],
-    },
+    // dynamics: {
+    //   serviceName: "Dynamics",
+    //   mode: Modes.service,
+    //   source: "odata/dynamics.xml",
+    //   output: "build/dynamics",
+    //   allowRenaming: true,
+    //   bundledFileGeneration: false,
+    //   byTypeAndName: [
+    //     {
+    //       type: TypeModel.EntityType,
+    //       name: "solution",
+    //       mappedName: "SolutionEntity",
+    //     },
+    //   ],
+    // },
     casePacer: {
       emitMode: EmitModes.ts,
       mode: Modes.service,
