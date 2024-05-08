@@ -1,4 +1,3 @@
-import { Person } from "../person/Person";
 import { PlanItem } from "../plan_item/PlanItem";
 
 export interface Trip {
@@ -80,15 +79,6 @@ export interface Trip {
    * | Nullable | `false` |
    */
   EndsAt: string;
-  /**
-   *
-   * OData Attributes:
-   * |Attribute Name | Attribute Value |
-   * | --- | ---|
-   * | Name | `Creator` |
-   * | Type | `Trippin.Person` |
-   */
-  Creator?: Person | null;
   /**
    *
    * OData Attributes:

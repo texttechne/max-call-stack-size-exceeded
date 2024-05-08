@@ -2,12 +2,10 @@ import {
   QueryObject,
   QStringPath,
   QEntityPath,
-  QEntityCollectionPath,
   QId,
   QStringParam,
 } from "@odata2ts/odata-query-objects";
 import { QAirportLocation } from "../airport_location/QAirportLocation";
-import { QAirline } from "../airline/QAirline";
 import { AirportId } from "./Airport";
 
 export class QAirport extends QueryObject {
@@ -17,10 +15,6 @@ export class QAirport extends QueryObject {
   public readonly Location = new QEntityPath(
     this.withPrefix("Location"),
     () => QAirportLocation
-  );
-  public readonly Airlines = new QEntityCollectionPath(
-    this.withPrefix("Airlines"),
-    () => QAirline
   );
 }
 

@@ -6,7 +6,6 @@ import {
   QCollectionPath,
   QStringCollection,
   QDateTimeOffsetPath,
-  QEntityPath,
   QEntityCollectionPath,
   QId,
   QNumberParam,
@@ -15,9 +14,9 @@ import {
   ReturnTypes,
   QComplexParam,
 } from "@odata2ts/odata-query-objects";
-import { QPerson } from "../person/QPerson";
 import { QPlanItem } from "../plan_item/QPlanItem";
 import { TripId } from "./Trip";
+import { QPerson } from "../person/QPerson";
 
 export class QTrip extends QueryObject {
   public readonly TripId = new QNumberPath(this.withPrefix("TripId"));
@@ -33,10 +32,6 @@ export class QTrip extends QueryObject {
     this.withPrefix("StartsAt")
   );
   public readonly EndsAt = new QDateTimeOffsetPath(this.withPrefix("EndsAt"));
-  public readonly Creator = new QEntityPath(
-    this.withPrefix("Creator"),
-    () => QPerson
-  );
   public readonly PlanItems = new QEntityCollectionPath(
     this.withPrefix("PlanItems"),
     () => QPlanItem

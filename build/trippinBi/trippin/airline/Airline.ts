@@ -1,5 +1,3 @@
-import { Airport } from "../airport/Airport";
-
 export interface Airline {
   /**
    * **Key Property**: This is a key property used to identify the entity.<br/>**Managed**: This property is managed on the server side and cannot be edited.
@@ -21,15 +19,6 @@ export interface Airline {
    * | Type | `Edm.String` |
    */
   Name: string | null;
-  /**
-   *
-   * OData Attributes:
-   * |Attribute Name | Attribute Value |
-   * | --- | ---|
-   * | Name | `Aiports` |
-   * | Type | `Collection(Trippin.Airport)` |
-   */
-  Aiports?: Array<Airport>;
 }
 
 export type AirlineId = string | { AirlineCode: string };

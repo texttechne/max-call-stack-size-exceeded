@@ -16,7 +16,6 @@ import {
 } from "@odata2ts/odata-service";
 import { Trip, EditableTrip, TripId } from "./Trip";
 import { QTrip, qTrip, Trip_QGetInvolvedPeople, QTripId } from "./QTrip";
-import { PersonService } from "../person/PersonService";
 import { PlanItemId } from "../plan_item/PlanItem";
 import { QPlanItemId } from "../plan_item/QPlanItem";
 import {
@@ -33,7 +32,6 @@ export class TripService<
     StringCollection,
     QStringCollection
   >;
-  private _Creator?: PersonService<ClientType>;
   private _Trip_QGetInvolvedPeople?: Trip_QGetInvolvedPeople;
 
   constructor(client: ClientType, basePath: string, name: string) {
@@ -52,15 +50,6 @@ export class TripService<
     }
 
     return this._Tags;
-  }
-
-  public Creator(): PersonService<ClientType> {
-    if (!this._Creator) {
-      const { client, path } = this.__base;
-      this._Creator = new PersonService(client, path, "Creator");
-    }
-
-    return this._Creator;
   }
 
   public PlanItems(): PlanItemCollectionService<ClientType>;

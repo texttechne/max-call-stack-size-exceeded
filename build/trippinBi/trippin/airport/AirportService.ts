@@ -6,12 +6,6 @@ import {
 import { Airport, EditableAirport, AirportId } from "./Airport";
 import { QAirport, qAirport, QAirportId } from "./QAirport";
 import { AirportLocationService } from "../airport_location/AirportLocationService";
-import { AirlineId } from "../airline/Airline";
-import { QAirlineId } from "../airline/QAirline";
-import {
-  AirlineService,
-  AirlineCollectionService,
-} from "../airline/AirlineService";
 
 export class AirportService<
   ClientType extends ODataHttpClient
@@ -29,20 +23,6 @@ export class AirportService<
     }
 
     return this._Location;
-  }
-
-  public Airlines(): AirlineCollectionService<ClientType>;
-  public Airlines(id: AirlineId): AirlineService<ClientType>;
-  public Airlines(id?: AirlineId | undefined) {
-    const fieldName = "Airlines";
-    const { client, path } = this.__base;
-    return typeof id === "undefined" || id === null
-      ? new AirlineCollectionService(client, path, fieldName)
-      : new AirlineService(
-          client,
-          path,
-          new QAirlineId(fieldName).buildUrl(id)
-        );
   }
 }
 
