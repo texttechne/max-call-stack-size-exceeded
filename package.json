@@ -9,11 +9,14 @@
     "test-trippinBi": "tsc -p ./tsconfig.trippinBi.json",
     "test-casePacer": "tsc -p ./tsconfig.casePacer.json"
   },
-  "author": "",
+  "author": "texttechne",
   "license": "ISC",
   "devDependencies": {
-    "@odata2ts/odata2ts": "0.34.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@odata2ts/odata2ts": "0.34.0",
+    "madge": "^7.0.0"
   }
 }
