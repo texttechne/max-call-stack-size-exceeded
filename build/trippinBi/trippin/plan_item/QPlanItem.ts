@@ -3,9 +3,11 @@ import {
   QNumberPath,
   QStringPath,
   QDateTimeOffsetPath,
+  QEntityCollectionPath,
   QId,
   QNumberParam,
 } from "@odata2ts/odata-query-objects";
+import { QPerson } from "../person/QPerson";
 import { PlanItemId } from "./PlanItem";
 
 export class QPlanItem extends QueryObject {
@@ -18,6 +20,10 @@ export class QPlanItem extends QueryObject {
   );
   public readonly EndsAt = new QDateTimeOffsetPath(this.withPrefix("EndsAt"));
   public readonly Duration = new QStringPath(this.withPrefix("Duration"));
+  public readonly PlanPerson = new QEntityCollectionPath(
+    this.withPrefix("PlanPerson"),
+    () => QPerson
+  );
 }
 
 export const qPlanItem = new QPlanItem();

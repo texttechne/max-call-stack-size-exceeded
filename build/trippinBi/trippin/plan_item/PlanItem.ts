@@ -1,3 +1,5 @@
+import { Person } from "../person/Person";
+
 export interface PlanItem {
   /**
    * **Key Property**: This is a key property used to identify the entity.<br/>**Managed**: This property is managed on the server side and cannot be edited.
@@ -49,6 +51,15 @@ export interface PlanItem {
    * | Nullable | `false` |
    */
   Duration: string;
+  /**
+   *
+   * OData Attributes:
+   * |Attribute Name | Attribute Value |
+   * | --- | ---|
+   * | Name | `PlanPerson` |
+   * | Type | `Collection(Trippin.Person)` |
+   */
+  PlanPerson?: Array<Person>;
 }
 
 export type PlanItemId = number | { PlanItemId: number };

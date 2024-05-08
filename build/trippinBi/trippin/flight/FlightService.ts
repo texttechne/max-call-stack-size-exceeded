@@ -5,6 +5,12 @@ import {
 } from "@odata2ts/odata-service";
 import { Flight, EditableFlight } from "./Flight";
 import { QFlight, qFlight } from "./QFlight";
+import { PersonId } from "../person/Person";
+import { QPersonId } from "../person/QPerson";
+import {
+  PersonService,
+  PersonCollectionService,
+} from "../person/PersonService";
 import { AirlineService } from "../airline/AirlineService";
 import { AirportService } from "../airport/AirportService";
 import { PlanItemId } from "../plan_item/PlanItem";
@@ -19,6 +25,16 @@ export class FlightService<
 
   constructor(client: ClientType, basePath: string, name: string) {
     super(client, basePath, name, qFlight);
+  }
+
+  public PlanPerson(): PersonCollectionService<ClientType>;
+  public PlanPerson(id: PersonId): PersonService<ClientType>;
+  public PlanPerson(id?: PersonId | undefined) {
+    const fieldName = "PlanPerson";
+    const { client, path } = this.__base;
+    return typeof id === "undefined" || id === null
+      ? new PersonCollectionService(client, path, fieldName)
+      : new PersonService(client, path, new QPersonId(fieldName).buildUrl(id));
   }
 
   public Airline(): AirlineService<ClientType> {

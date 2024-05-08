@@ -2,6 +2,7 @@ import {
   AirportLocation,
   EditableAirportLocation,
 } from "../airport_location/AirportLocation";
+import { Airline } from "../airline/Airline";
 
 export interface Airport {
   /**
@@ -42,6 +43,15 @@ export interface Airport {
    * | Type | `Trippin.AirportLocation` |
    */
   Location: AirportLocation | null;
+  /**
+   *
+   * OData Attributes:
+   * |Attribute Name | Attribute Value |
+   * | --- | ---|
+   * | Name | `Airlines` |
+   * | Type | `Collection(Trippin.Airline)` |
+   */
+  Airlines?: Array<Airline>;
 }
 
 export type AirportId = string | { IcaoCode: string };

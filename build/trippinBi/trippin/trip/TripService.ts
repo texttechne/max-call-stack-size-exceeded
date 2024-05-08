@@ -16,13 +16,18 @@ import {
 } from "@odata2ts/odata-service";
 import { Trip, EditableTrip, TripId } from "./Trip";
 import { QTrip, qTrip, Trip_QGetInvolvedPeople, QTripId } from "./QTrip";
+import { PersonId, Person } from "../person/Person";
+import { QPersonId } from "../person/QPerson";
+import {
+  PersonService,
+  PersonCollectionService,
+} from "../person/PersonService";
 import { PlanItemId } from "../plan_item/PlanItem";
 import { QPlanItemId } from "../plan_item/QPlanItem";
 import {
   PlanItemService,
   PlanItemCollectionService,
 } from "../plan_item/PlanItemService";
-import { Person } from "../person/Person";
 
 export class TripService<
   ClientType extends ODataHttpClient
@@ -50,6 +55,16 @@ export class TripService<
     }
 
     return this._Tags;
+  }
+
+  public TripPeople(): PersonCollectionService<ClientType>;
+  public TripPeople(id: PersonId): PersonService<ClientType>;
+  public TripPeople(id?: PersonId | undefined) {
+    const fieldName = "TripPeople";
+    const { client, path } = this.__base;
+    return typeof id === "undefined" || id === null
+      ? new PersonCollectionService(client, path, fieldName)
+      : new PersonService(client, path, new QPersonId(fieldName).buildUrl(id));
   }
 
   public PlanItems(): PlanItemCollectionService<ClientType>;

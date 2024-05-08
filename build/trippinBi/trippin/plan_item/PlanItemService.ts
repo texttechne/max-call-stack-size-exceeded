@@ -5,6 +5,12 @@ import {
 } from "@odata2ts/odata-service";
 import { PlanItem, EditablePlanItem, PlanItemId } from "./PlanItem";
 import { QPlanItem, qPlanItem, QPlanItemId } from "./QPlanItem";
+import { PersonId } from "../person/Person";
+import { QPersonId } from "../person/QPerson";
+import {
+  PersonService,
+  PersonCollectionService,
+} from "../person/PersonService";
 
 export class PlanItemService<
   ClientType extends ODataHttpClient
@@ -16,6 +22,16 @@ export class PlanItemService<
 > {
   constructor(client: ClientType, basePath: string, name: string) {
     super(client, basePath, name, qPlanItem);
+  }
+
+  public PlanPerson(): PersonCollectionService<ClientType>;
+  public PlanPerson(id: PersonId): PersonService<ClientType>;
+  public PlanPerson(id?: PersonId | undefined) {
+    const fieldName = "PlanPerson";
+    const { client, path } = this.__base;
+    return typeof id === "undefined" || id === null
+      ? new PersonCollectionService(client, path, fieldName)
+      : new PersonService(client, path, new QPersonId(fieldName).buildUrl(id));
   }
 }
 

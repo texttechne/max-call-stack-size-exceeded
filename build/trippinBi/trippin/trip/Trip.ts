@@ -1,3 +1,4 @@
+import { Person } from "../person/Person";
 import { PlanItem } from "../plan_item/PlanItem";
 
 export interface Trip {
@@ -79,6 +80,15 @@ export interface Trip {
    * | Nullable | `false` |
    */
   EndsAt: string;
+  /**
+   *
+   * OData Attributes:
+   * |Attribute Name | Attribute Value |
+   * | --- | ---|
+   * | Name | `TripPeople` |
+   * | Type | `Collection(Trippin.Person)` |
+   */
+  TripPeople?: Array<Person>;
   /**
    *
    * OData Attributes:

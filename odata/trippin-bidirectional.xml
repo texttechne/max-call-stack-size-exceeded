@@ -27,6 +27,8 @@
         </Key>
         <Property Name="AirlineCode" Type="Edm.String" Nullable="false" />
         <Property Name="Name" Type="Edm.String" />
+        <NavigationProperty Name="HomeAirport" Type="Trippin.Airport" />
+        <NavigationProperty Name="Airports" Type="Collection(Trippin.Airport)" />
       </EntityType>
       <EntityType Name="Airport">
         <Key>
@@ -36,6 +38,7 @@
         <Property Name="IcaoCode" Type="Edm.String" Nullable="false" />
         <Property Name="IataCode" Type="Edm.String" />
         <Property Name="Location" Type="Trippin.AirportLocation" />
+        <NavigationProperty Name="Airlines" Type="Collection(Trippin.Airline)" />
       </EntityType>
       <ComplexType Name="Location">
         <Property Name="Address" Type="Edm.String" />
@@ -64,6 +67,7 @@
         <Property Name="Tags" Type="Collection(Edm.String)" />
         <Property Name="StartsAt" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="EndsAt" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="TripPeople" Type="Collection(Trippin.Person)" />
         <NavigationProperty Name="PlanItems" Type="Collection(Trippin.PlanItem)" />
       </EntityType>
       <EntityType Name="PlanItem">
@@ -75,6 +79,7 @@
         <Property Name="StartsAt" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="EndsAt" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Duration" Type="Edm.Duration" Nullable="false" />
+        <NavigationProperty Name="PlanPerson" Type="Collection(Trippin.Person)" />
       </EntityType>
       <EntityType Name="Event" BaseType="Trippin.PlanItem">
         <Property Name="OccursAt" Type="Trippin.EventLocation" />

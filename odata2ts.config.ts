@@ -34,6 +34,7 @@ const config: ConfigFileOptions = {
       source: "odata/trippin.xml",
       output: "build/trippin",
     },
+    // works fine, even with circular dependencies
     trippinBi: {
       bundledFileGeneration: false,
       source: "odata/trippin-bidirectional.xml",
